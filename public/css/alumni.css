@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+#alumniContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  justify-content: space-between; /* Distribute items with space between */
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  padding: 20px 15px 15px 15px;
+  text-align: center;
+  overflow: hidden;
+  flex: 1 1 250px; /* Make the cards flexible, with a base width of 250px */
+  max-width: 250px; /* Limit the max width to 250px */
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 10px auto;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.details {
+  font-size: 14px;
+  color: #555;
+  margin: 4px 0;
+}
+
+.links {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.connect-btn {
+  background-color: #0a66c2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.connect-btn:hover {
+  background-color: #004182;
+}
+
+.connect-btn.github {
+  background-color: #333;
+}
+
+.connect-btn.github:hover {
+  background-color: #000;
+}
