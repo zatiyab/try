@@ -56,7 +56,10 @@ app.get("/achievements", (req, res) => {
 });
 
 app.get("/dashboard", (req, res) => {
-    res.render("dashboard.ejs")
+    const name = req.query.username
+    console.log(name)
+    console.log(req.body)
+    res.render("dashboard.ejs", { name: name })
 })
 app.get("/login", (req, res) => {
     res.render("login.ejs")
@@ -73,7 +76,8 @@ app.post("/login", async (req, res) => {
         console.log(user)
         if ((user.email === req.body.email) && (user.password === req.body.password)) {
             console.log("User exists.")
-            return res.redirect("/dashboard")
+            let username = user.name
+            return res.redirect(`/dashboard?username=${username}`)
         }
     }
     console.log('User does not exist.')
