@@ -1,5 +1,6 @@
 
 
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const pg = require("pg");
@@ -17,6 +18,14 @@ const db = new pg.Client({
 });
 
 const staticFiles = "C:\\Users\\DELL\\Desktop\\Webdash\\public";
+
+const session = require('express-session');
+
+app.use(session({
+    secret: 'yourSecretKey', // use something stronger in production
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(staticFiles));
@@ -56,11 +65,17 @@ app.get("/achievements", (req, res) => {
 });
 
 app.get("/dashboard", (req, res) => {
-    const name = req.query.username
-    console.log(name)
-    console.log(req.body)
+    const name = req.session.user.name;
     res.render("dashboard.ejs", { name: name })
 })
+
+app.get('/logout', (req, res) => {
+    console.log("Logging Out.")
+    req.session.destroy(err => {
+        if (err) console.log(err);
+        res.redirect('/');
+    });
+});
 app.get("/login", (req, res) => {
     res.render("login.ejs")
 })
@@ -69,14 +84,16 @@ app.get("/signup", (req, res) => {
 })
 
 app.post("/login", async (req, res) => {
-    console.log(req.body)
+
     const qres = await db.query("SELECT * FROM users")
     const users = qres.rows
     for (let user of users) {
-        console.log(user)
+
         if ((user.email === req.body.email) && (user.password === req.body.password)) {
             console.log("User exists.")
             let username = user.name
+            req.session.user = { name: username };
+            console.log(req.session.user)
             return res.redirect(`/dashboard?username=${username}`)
         }
     }
@@ -84,12 +101,14 @@ app.post("/login", async (req, res) => {
     return res.redirect("/login")
 
 })
+
+
 app.post("/signup", async (req, res) => {
-    console.log(req.body)
+
     const qres = await db.query("SELECT * FROM users")
     const users = qres.rows
     for (let user of users) {
-        console.log(user)
+
         if ((user.email === req.body.email) && (user.password === req.body.password)) {
             console.log("User exists.")
             return res.redirect("/login")
@@ -105,4 +124,3 @@ app.post("/signup", async (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
-console.log("Hello Backend")
