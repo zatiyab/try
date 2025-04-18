@@ -1,3 +1,5 @@
+
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const pg = require("pg");
@@ -25,8 +27,13 @@ app.set('views', 'C:\\Users\\DELL\\Desktop\\Webdash\\views');
 db.connect();
 
 app.get("/", (req, res) => {
-    res.sendFile(staticFiles + "\\index.html")
+    res.sendFile(staticFiles + "\\home.html")
 })
+
+app.get('/alumni-directory', (req, res) => {
+    res.sendFile(staticFiles + "\\alumniCards.html")
+})
+
 app.get("/dashboard", (req, res) => {
     res.render("dashboard.ejs")
 })
