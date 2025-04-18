@@ -30,9 +30,30 @@ app.get("/", (req, res) => {
     res.sendFile(staticFiles + "\\home.html")
 })
 
-app.get('/alumni-directory', (req, res) => {
-    res.sendFile(staticFiles + "\\alumniCards.html")
+app.get('/directory', (req, res) => {
+    res.render("alumniCards.ejs")
 })
+
+app.get("/achievements", (req, res) => {
+    const achievements = [
+        {
+            title: "1st Place - AI Hackathon",
+            description: "Won 1st place in an inter-college AI Hackathon for building an AI traffic controller.",
+            date: "March 2024"
+        },
+        {
+            title: "Launched Personal Portfolio",
+            description: "Built and deployed my own personal website with Express and EJS."
+        },
+        {
+            title: "Internship at DevTech",
+            description: "Worked as a backend intern using Node.js and PostgreSQL.",
+            date: "June 2023 - August 2023"
+        },
+    ]
+
+    res.render("achievements.ejs", { achievements });
+});
 
 app.get("/dashboard", (req, res) => {
     res.render("dashboard.ejs")
