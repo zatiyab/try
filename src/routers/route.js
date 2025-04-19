@@ -87,6 +87,7 @@ app.get("/achievements", async (req, res) => {
 });
 
 app.get("/dashboard", async (req, res) => {
+    //this is a comment
     const qres = await db.query("SELECT name,post FROM posts,users WHERE posts.user_id= users.user_id;")
     var posts_users = (qres.rows).reverse()
     const name = req.session.user.name;
