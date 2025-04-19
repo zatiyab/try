@@ -38,7 +38,9 @@ db.connect();
 app.get("/", (req, res) => {
     res.sendFile(staticFiles + "\\home.html")
 })
-
+app.get("/feed", (req, res) => {
+    res.render("community.ejs")
+})
 app.get('/directory', (req, res) => {
     res.render("alumniCards.ejs")
 })
