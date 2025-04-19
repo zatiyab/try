@@ -1,14 +1,249 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: #333;
 }
+
+/* nav-bar */
+.navbar {
+  background-color: #f9f9f9;
+}
+
+/* Smooth transitions for nav links and buttons */
+.nav-link {
+  transition: all 0.3s ease;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #333 !important;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* Underline effect on nav-link hover (close to text) */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #0d6efd;
+  left: 0;
+  bottom: 0;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Link hover color stays dark */
+.nav-link:hover {
+  color: #0d6efd !important;
+}
+
+/* Brand styling */
+.navbar-brand {
+  transition: all 0.3s ease;
+  color: #222 !important;
+  display: flex;
+  gap: 10px;
+}
+.navbar-brand img{
+  width: 40px;
+}
+
+.navbar-brand:hover {
+  color: #0d6efd !important;
+  transform: scale(1.02);
+}
+
+/* Button transitions and scale on hover */
+/* Buttons container */
+.d-flex {
+  display: flex;
+  gap: 1rem;
+  /* Increased gap for better spacing */
+}
+
+/* Base button style */
+.btn {
+  padding: 0.6rem 1.4rem;
+  /* Adjusted padding for a fuller appearance */
+  border-radius: 30px;
+  /* Slightly rounded corners for elegance */
+  font-size: 1rem;
+  /* Increased font size for better readability */
+  font-weight: 600;
+  /* Increased font weight for prominence */
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  /* More transitions for smoother effects */
+  position: relative;
+  /* Allows positioning of pseudo-elements */
+}
+
+/* Sign In button */
+.btn-primary {
+  background: #0d6efd;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+}
+
+/* On hover: scale effect and color change */
+
+.btn-primary:hover {
+  background: #007bff;
+  /* Slightly darker blue on hover */
+  /* transform: scale(1.1); Slightly larger on hover */
+}
+
+
+/* Sign Up button */
+.btn-outline-primary {
+  border: 2px solid #0d6efd;
+  color: #0d6efd;
+  background: transparent;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  /* Add transitions for border and background */
+}
+
+/* On hover: background color and scale effect */
+.btn-outline-primary:hover {
+  background: #0d6efd;
+  color: #fff;
+  /* transform: scale(1.1); Slightly larger on hover */
+}
+
+/* Optional: Focusing on buttons for accessibility */
+.btn:focus {
+  outline: none;
+  /* Remove default outline */
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.5);
+  /* Add a focus shadow for visibility */
+}
+
+/* Alumni Card Section */
+.alumni-card {
+  padding: 60px 20px;
+  background: #f8f9fa;
+  margin-top: -120px;
+}
+
+/* Grid Layout for cards */
+.alumni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Card */
+.alumni-inside {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.alumni-inside:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Style */
+.alumni-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Content Styling */
+.alumni-content {
+  padding: 16px;
+  text-align: center;
+}
+
+.alumni-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Details styling */
+.alumni-info {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+/* Buttons Layout */
+.alumni-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+/* Button Styling */
+.btn {
+  padding: 0.4rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  box-shadow: 0 3px 8px rgba(13, 110, 253, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Outline Button */
+.btn-outline {
+  background: transparent;
+  border: 1.6px solid #0d6efd;
+  color: #0d6efd;
+}
+
+.btn-outline:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(13, 110, 253, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .alumni-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .alumni-info {
+    font-size: 0.85rem;
+  }
+}
+
+
+
 /* Scroller Section */
 .scroller {
   background: #f0f8ff;
@@ -32,9 +267,15 @@ body {
 }
 
 @keyframes scroll {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
+
 .main-heading {
   font-size: 3rem;
   color: #003366;
@@ -59,28 +300,34 @@ body {
   text-align: center;
   color: white;
 }
+
 .hero::after {
   content: "";
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
+
 .hero-content {
   position: relative;
   z-index: 2;
 }
+
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
   font-weight: bold;
 }
+
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
+
 .hero a {
   display: inline-block;
   padding: 12px 30px;
@@ -91,6 +338,7 @@ body {
   text-decoration: none;
   transition: background 0.3s;
 }
+
 .hero a:hover {
   background-color: #e6b800;
 }
@@ -103,38 +351,45 @@ body {
   padding: 80px 10%;
   background-color: #f9f9f9;
 }
+
 .about-text {
   flex: 1 1 50%;
   padding: 20px;
 }
+
 .about-text h2 {
   font-size: 2.5rem;
   color: #003366;
   margin-bottom: 20px;
   font-weight: bold;
 }
+
 .about-text ul {
   list-style: none;
 }
+
 .about-text ul li {
   margin-bottom: 15px;
   font-size: 1.1rem;
 }
+
 .about-text ul li::before {
   content: "✅";
   margin-right: 10px;
   color: #28a745;
 }
+
 .about-image {
   flex: 1 1 50%;
   text-align: center;
   padding: 20px;
 }
+
 .about-image img {
   max-width: 60%;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive */
@@ -142,8 +397,86 @@ body {
   .hero h1 {
     font-size: 2rem;
   }
+
   .about {
     flex-direction: column;
     text-align: center;
   }
+}
+
+/* footer */
+/* Footer main container */
+.footer {
+  background-color: #f9f9f9;
+  padding: 30px 0 15px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+/* Inside footer: logo + nav links */
+.inside-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+}
+
+/* Footer logo */
+.footer-logo img {
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Footer nav list */
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 30px;
+}
+
+/* Footer links */
+.footer-link {
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #333;
+  position: relative;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Underline effect for footer links */
+.footer-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #0d6efd;
+  left: 0;
+  bottom: 0;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* Keep link color dark on hover */
+.footer-link:hover {
+  color: #0d6efd;
+}
+
+/* Copyright line */
+.footer-copy {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+  padding-top: 10px;
+  border-top: 1px solid #eaeaea;
 }
