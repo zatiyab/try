@@ -1,5 +1,8 @@
 
-
+const path = require('path');
+console.log(path)
+console.log(__dirname)
+path.join(__dirname, 'public', 'index.html')
 const multer = require('multer');
 const upload = multer(); // You can configure storage later if neede
 const express = require("express");
@@ -8,6 +11,7 @@ const pg = require("pg");
 require('dotenv').config();
 
 const app = express();
+console.log(app.path())
 const router = express.Router();
 const port = 3000;
 
@@ -19,7 +23,8 @@ const db = new pg.Client({
     database: process.env.DB_DATABASE,
 });
 
-// const staticFiles = "C:\\Users\\DELL\\Desktop\\Webdash\\public";
+console.log(path.join(__dirname, '..\\..\\public', ''))
+const staticFiles = 'public';
 
 const session = require('express-session');
 
@@ -37,14 +42,14 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(staticFiles));
 app.set('view engine', 'ejs');
-app.set('views', 'C:\\Users\\DELL\\Desktop\\Webdash\\views');
+app.set('views', 'views');
 
 
 //db.connect();
 
 
 app.get("/", (req, res) => {
-    res.sendFile("\\home.html")
+    res.sendFile(path.join(__dirname, '..\\..\\public', 'home.html'))
 })
 
 app.get("/edit-profile", (req, res) => {
