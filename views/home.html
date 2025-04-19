@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,92 +10,196 @@
 </head>
 
 <body>
-  
-  
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <!-- Logo -->
-    <a class="navbar-brand me-auto" href="#">Alumni Portal</a>
 
-    <!-- Links Centered -->
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Events</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Alumni</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
+
+  <!-- Navbar -->
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet"> <!-- Link to our custom CSS -->
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand fw-bold fs-3" href="#">
+        <img src="/public/images/alumni-logo-footer.png" alt="">Alumni Portal</a>
+
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav gap-4">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Alumni</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Buttons -->
+      <div class="d-flex ms-auto gap-2">
+        <button type="button" class="btn btn-primary btn-sm rounded-pill px-4 py-2">Sign In</button>
+        <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4 py-2">Sign Up</button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+  <!-- Main Section -->
+
+  <!-- Hero Section -->
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Our Alumni Portal</h1>
+      <p>Stay connected, share your journey, and celebrate success together.</p>
+      <a href="#about">Explore More</a>
+    </div>
+  </section>
+
+  <!-- Scroller Section -->
+  <section class="scroller">
+    <div class="scroller-track">
+      <div class="scroller-item">🎓 Education is the passport to the future!</div>
+      <div class="scroller-item">📚 Lifelong learning with our Alumni community!</div>
+      <div class="scroller-item">🏫 Stay connected with your alma mater!</div>
+      <div class="scroller-item">🎉 Celebrating achievements together!</div>
+      <div class="scroller-item">🌟 Knowledge grows when shared!</div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+
+    <div class="about-text">
+      <h1 class="main-heading">About</h1>
+      <h2 class="sub-heading">Why Use the Alumni Portal?</h2>
+
+      <ul>
+        <li>Reconnect with batchmates and mentors globally.</li>
+        <li>Discover exclusive alumni events and reunions.</li>
+        <li>Boost your career with networking opportunities.</li>
+        <li>Share your achievements and inspire future generations.</li>
+        <li>Stay updated with your alma mater’s growth and initiatives.</li>
       </ul>
     </div>
-
-    <!-- Buttons at Right -->
-    <div class="d-flex ms-auto">
-      <button type="button" class="btn btn-light btn-md me-2">SignIn</button>
-      <button type="button" class="btn btn-outline-light btn-md">SignUp</button>
+    <div class="about-image">
+      <img
+        src="https://plus.unsplash.com/premium_vector-1732704035816-d123bef18b57?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWJvdXQlMjBzZWN0aW9ufGVufDB8fDB8fHww"
+        alt="Alumni Illustration">
     </div>
+  </section>
 
-    <!-- Toggler for Mobile -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</nav>
+  <!-- Alumni-card section -->
+  <section class="alumni-card">
+    <div class="alumni-grid">
+      <!-- card-1 -->
+      <div class="alumni-inside">
+        <div class="alumni-image">
+          <img src="/public/images/alumni-card-img.jpg" alt="Alumni Image">
+        </div>
+        <div class="alumni-content">
+          <h3>John Doe</h3>
+          <p class="alumni-info">
+            <strong>Batch:</strong> 2010<br>
+            <strong>Branch:</strong> Computer Science<br>
+            <strong>Company:</strong> Google<br>
+            <strong>Job:</strong> Software Engineer<br>
+            <strong>Location:</strong> California, USA
+          </p>
+          <div class="alumni-buttons">
+            <button class="btn btn-primary">Contact</button>
+            <button class="btn btn-outline">Profile</button>
+          </div>
+        </div>
+      </div>
 
+      <!-- card-2 -->
+      <div class="alumni-inside">
+        <div class="alumni-image">
+          <img src="/public/images/alumni-card-img.jpg" alt="Alumni Image">
+        </div>
+        <div class="alumni-content">
+          <h3>Jane Smith</h3>
+          <p class="alumni-info">
+            <strong>Batch:</strong> 2012<br>
+            <strong>Branch:</strong> IT<br>
+            <strong>Company:</strong> Microsoft<br>
+            <strong>Job:</strong> Product Manager<br>
+            <strong>Location:</strong> New York, USA
+          </p>
+          <div class="alumni-buttons">
+            <button class="btn btn-primary">Contact</button>
+            <button class="btn btn-outline">Profile</button>
+          </div>
+        </div>
+      </div>
 
-<!-- Main Section -->
+      <!-- card-3 -->
+      <div class="alumni-inside">
+        <div class="alumni-image">
+          <img src="/public/images/alumni-card-img.jpg" alt="Alumni Image">
+        </div>
+        <div class="alumni-content">
+          <h3>Mike Johnson</h3>
+          <p class="alumni-info">
+            <strong>Batch:</strong> 2015<br>
+            <strong>Branch:</strong> ECE<br>
+            <strong>Company:</strong> Amazon<br>
+            <strong>Job:</strong> Cloud Architect<br>
+            <strong>Location:</strong> Seattle, USA
+          </p>
+          <div class="alumni-buttons">
+            <button class="btn btn-primary">Contact</button>
+            <button class="btn btn-outline">Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Hero Section -->
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Welcome to Our Alumni Portal</h1>
-    <p>Stay connected, share your journey, and celebrate success together.</p>
-    <a href="#about">Explore More</a>
-  </div>
-</section>
-
-<!-- Scroller Section -->
-<section class="scroller">
-  <div class="scroller-track">
-    <div class="scroller-item">🎓 Education is the passport to the future!</div>
-    <div class="scroller-item">📚 Lifelong learning with our Alumni community!</div>
-    <div class="scroller-item">🏫 Stay connected with your alma mater!</div>
-    <div class="scroller-item">🎉 Celebrating achievements together!</div>
-    <div class="scroller-item">🌟 Knowledge grows when shared!</div>
-  </div>
-</section>
-
-<!-- About Section -->
-<section id="about" class="about">
-
-  <div class="about-text">
-    <h1 class="main-heading">About</h1>
-    <h2 class="sub-heading">Why Use the Alumni Portal?</h2>
+  <footer class="footer">
+    <div class="inside-footer">
+      <!-- Logo -->
+      <div class="footer-logo">
+        <img src="/public/images/alumni-logo-footer.png" alt="Alumni Portal Logo">
+      </div>
   
-    <ul>
-      <li>Reconnect with batchmates and mentors globally.</li>
-      <li>Discover exclusive alumni events and reunions.</li>
-      <li>Boost your career with networking opportunities.</li>
-      <li>Share your achievements and inspire future generations.</li>
-      <li>Stay updated with your alma mater’s growth and initiatives.</li>
-    </ul>
-  </div>
-  <div class="about-image">
-    <img src="https://plus.unsplash.com/premium_vector-1732704035816-d123bef18b57?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWJvdXQlMjBzZWN0aW9ufGVufDB8fDB8fHww" alt="Alumni Illustration">
-  </div>
-</section>
-
+      <!-- Navigation Links -->
+      <ul class="footer-nav">
+        <li><a class="footer-link" href="#">Home</a></li>
+        <li><a class="footer-link" href="#">Events</a></li>
+        <li><a class="footer-link" href="#">Alumni</a></li>
+        <li><a class="footer-link" href="#">Contact</a></li>
+      </ul>
+    </div>
+  
+    <!-- Copyright -->
+    <div class="footer-copy">
+      &copy; 2025 Alumni Portal. All rights reserved.
+    </div>
+  </footer>
+  
+  
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../public/js/script.js"></script>
 </body>
+
 </html>
