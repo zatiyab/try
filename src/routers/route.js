@@ -10,12 +10,13 @@ require('dotenv').config();
 const app = express();
 const router = express.Router();
 const port = 3000;
+
 const db = new pg.Client({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    database: "Alumni",
+    database: process.env.DB_DATABASE,
 });
 
 const staticFiles = "C:\\Users\\DELL\\Desktop\\Webdash\\public";
