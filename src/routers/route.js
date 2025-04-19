@@ -39,6 +39,10 @@ app.get("/", (req, res) => {
     res.sendFile(staticFiles + "\\home.html")
 })
 
+app.get("/community", (req, res) => {
+    res.render("community.ejs")
+})
+
 app.get('/profile/:id', async (req, res) => {
     const id = parseInt(req.params.id);
     const qres = await db.query("SELECT * FROM users WHERE user_id = $1", [id])
