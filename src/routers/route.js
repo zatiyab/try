@@ -1,8 +1,5 @@
 
-const path = require('path');
-console.log(path)
-console.log(__dirname)
-path.join(__dirname, 'public', 'index.html')
+
 const multer = require('multer');
 const upload = multer(); // You can configure storage later if neede
 const express = require("express");
@@ -11,7 +8,6 @@ const pg = require("pg");
 require('dotenv').config();
 
 const app = express();
-console.log(app.path())
 const router = express.Router();
 const port = 3000;
 
@@ -23,8 +19,7 @@ const db = new pg.Client({
     database: process.env.DB_DATABASE,
 });
 
-console.log(path.join(__dirname, '..\\..\\public', ''))
-const staticFiles = 'public';
+const staticFiles = "C:\\Users\\DELL\\Desktop\\Webdash\\public";
 
 const session = require('express-session');
 
@@ -42,14 +37,13 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(staticFiles));
 app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.set('views', 'C:\\Users\\DELL\\Desktop\\Webdash\\views');
 
 
-//db.connect();
-
+db.connect();
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, '..\\..\\public', 'home.html'))
+    res.sendFile(staticFiles + "\\home.html")
 })
 
 app.get("/edit-profile", (req, res) => {
@@ -58,14 +52,12 @@ app.get("/edit-profile", (req, res) => {
 
 
 app.get('/profile/:id', async (req, res) => {
-    db.connect();
     const id = parseInt(req.params.id);
     const qres = await db.query("SELECT * FROM users WHERE user_id = $1", [id])
     const user = qres.rows[0]
     const qres2 = await db.query("SELECT * FROM achievements WHERE user_id =$1;", [id]);
     const userAchievements = qres2.rows
     console.log(user)
-    client.end()
     res.render('viewProfile.ejs', {
         user,
         achievements: userAchievements
@@ -74,39 +66,31 @@ app.get('/profile/:id', async (req, res) => {
 
 
 app.get("/feed", async (req, res) => {
-    db.connect();
     const qres = await db.query("SELECT * FROM posts,users WHERE posts.user_id= users.user_id;")
     var posts_users = (qres.rows).reverse()
-    client.end()
+
     res.render("community-feed.ejs", { posts_users: posts_users })
 })
 
 
 app.get('/directory', async (req, res) => {
-    db.connect();
     const qres = await db.query("SELECT * FROM users")
     const users = qres.rows
     console.log(users)
-    client.end()
     res.render("alumniCards.ejs", { users: users })
 })
 
 app.get("/achievements", async (req, res) => {
-    db.connect();
     const qres = await db.query("SELECT * FROM achievements WHERE user_id =$1;", [req.session.user.user_id]);
     const achievements = (qres.rows).reverse()
     console.log(achievements)
-    client.end()
     res.render("achievements.ejs", { achievements });
 });
 
 app.get("/dashboard", async (req, res) => {
-    //this is a comment
-    db.connect();
     const qres = await db.query("SELECT name,post FROM posts,users WHERE posts.user_id= users.user_id;")
     var posts_users = (qres.rows).reverse()
     const name = req.session.user.name;
-    client.end()
     res.render("dashboard.ejs", { name: name, posts: posts_users })
 })
 
@@ -130,13 +114,11 @@ app.get("/signup", (req, res) => {
 
 
 app.post("/add-achievements", async (req, res) => {
-    db.connect();
     data = req.body
     const user_id = req.session.user.user_id
     data["user_id"] = user_id
     console.log(data)
     const qres = await db.query("INSERT INTO achievements (user_id, name, org, description, month, year)VALUES ($1,$2,$3,$4,$5,$6);", [data.user_id, data.name, data.org, data.description, data.month, data.year])
-    client.end()
     res.redirect("/achievements")
 })
 
@@ -144,16 +126,13 @@ app.post('/post', upload.none(), async (req, res) => {
     const tags = req.body.tags.split(",")
     const user_id = req.session.user.user_id
     const post = req.body.content
-    db.connect();
     const qres = await db.query("INSERT INTO posts (user_id, post, tags) VALUES ($1, $2, $3)", [user_id, post, tags]);
-    client.end()
     res.redirect('/feed');
 });
 
 app.post("/login", async (req, res) => {
-    db.connect();
+
     const qres = await db.query("SELECT * FROM users")
-    client.end()
     const users = qres.rows
     for (let user of users) {
 
@@ -174,14 +153,13 @@ app.post("/login", async (req, res) => {
 
 
 app.post("/signup", async (req, res) => {
-    db.connect();
+
     const qres = await db.query("SELECT * FROM users")
     const users = qres.rows
     for (let user of users) {
 
         if ((user.email === req.body.email) && (user.password === req.body.password)) {
             console.log("User exists.")
-            client.end()
             return res.redirect("/login")
         }
     }
@@ -189,7 +167,6 @@ app.post("/signup", async (req, res) => {
         "INSERT INTO users (email,password) VALUES ($1,$2)",
         [req.body.email, req.body.password]
     );
-    client.end()
     res.redirect("/dashboard")
 })
 
