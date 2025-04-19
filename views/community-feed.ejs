@@ -33,42 +33,50 @@
                 <div class="posts-container" id="posts-container">
 
                     <!-- Sample post -->
-                    <div class="post">
-                        <div class="post-header">
-                            <img src="./images/alumni-card-img.jpg" alt="User" class="post-user-img">
-                            <div class="post-user-info">
-                                <div class="post-user-name">Jane Smith</div>
-                                <div class="post-user-headline">Product Manager at Tech Company</div>
-                                <div class="post-time">2 hours ago</div>
+                    <% posts_users.forEach((post)=>{%>
+                        <div class="post">
+                            <div class="post-header">
+                                <img src="./images/alumni-card-img.jpg" alt="User" class="post-user-img">
+                                <div class="post-user-info">
+                                    <div class="post-user-name">
+                                        <%= post.name %>
+                                    </div>
+                                    <div class="post-user-headline">
+                                        <%= post.job_title %> at <%= post.company %>
+                                    </div>
+                                    <!-- <div class="post-time">2 hours ago</div> -->
+                                </div>
+                            </div>
+
+                            <div class="post-content">
+                                <%= post.post %>
+                            </div>
+
+                            <!-- Tags Section -->
+                            <div class="post-tags mt-2">
+                                <% for (const tag of post.tags) {%>
+                                    <span class="badge bg-secondary me-1">#<%= tag %></span>
+
+                                    <%} %>
+
+                            </div>
+
+                            <div class="post-interactions mt-2">
+                                <div class="interaction">
+                                    <i>👍</i> Like <span></span>
+                                </div>
+                                <div class="interaction">
+                                    <i>💬</i> Comment <span></span>
+                                </div>
+                                <div class="interaction">
+                                    <i>↪️</i> Share <span></span>
+                                </div>
                             </div>
                         </div>
+                        <% }) %>
 
-                        <div class="post-content">
-                            Just finished an amazing product launch! Thanks to everyone on the team for their hard work
-                            and dedication.
-                        </div>
 
-                        <!-- Tags Section -->
-                        <div class="post-tags mt-2">
-                            <span class="badge bg-secondary me-1">#ProductLaunch</span>
-                            <span class="badge bg-secondary me-1">#Teamwork</span>
-                            <span class="badge bg-secondary me-1">#Grateful</span>
-                        </div>
-
-                        <div class="post-interactions mt-2">
-                            <div class="interaction">
-                                <i>👍</i> Like <span>(42)</span>
-                            </div>
-                            <div class="interaction">
-                                <i>💬</i> Comment <span>(42)</span>
-                            </div>
-                            <div class="interaction">
-                                <i>↪️</i> Share <span>(42)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- More posts will be dynamically added here -->
+                            <!-- More posts will be dynamically added here -->
                 </div>
             </div>
             <!-- Post Form (Right) -->

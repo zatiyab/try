@@ -1,6 +1,7 @@
 
 
-
+const multer = require('multer');
+const upload = multer(); // You can configure storage later if neede
 const express = require("express");
 const bodyParser = require("body-parser");
 const pg = require("pg");
@@ -26,7 +27,10 @@ const session = require('express-session');
 app.use(session({
     secret: 'yourSecretKey', // use something stronger in production
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 // 30 minutes in milliseconds
+    }
 }));
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -60,9 +64,14 @@ app.get('/profile/:id', async (req, res) => {
 });
 
 
-app.get("/feed", (req, res) => {
-    res.render("community-feed.ejs")
+app.get("/feed", async (req, res) => {
+    const qres = await db.query("SELECT * FROM posts,users WHERE posts.user_id= users.user_id;")
+    var posts_users = (qres.rows).reverse()
+
+    res.render("community-feed.ejs", { posts_users: posts_users })
 })
+
+
 app.get('/directory', async (req, res) => {
     const qres = await db.query("SELECT * FROM users")
     const users = qres.rows
@@ -89,12 +98,25 @@ app.get('/logout', (req, res) => {
         res.redirect('/');
     });
 });
+
 app.get("/login", (req, res) => {
     res.render("login.ejs")
 })
+
 app.get("/signup", (req, res) => {
     res.render("signup.ejs")
 })
+
+
+
+
+app.post('/post', upload.none(), async (req, res) => {
+    const tags = req.body.tags.split(",")
+    const user_id = req.session.user.user_id
+    const post = req.body.content
+    const qres = await db.query("INSERT INTO posts (user_id, post, tags) VALUES ($1, $2, $3)", [user_id, post, tags]);
+    res.redirect('/feed');
+});
 
 app.post("/login", async (req, res) => {
 
