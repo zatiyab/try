@@ -1,12 +1,12 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
+
 const pool = new Pool({
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_DATABASE,
+    connectionString: process.env.DATABASE_URL, // Use connection string from cloud provider
+    ssl: {
+        rejectUnauthorized: false // Only if using SSL (common for cloud databases)
+    }
 });
 
-module.exports = pool; 
+module.exports = pool; // Export the pool so it can be used in other parts of the app
