@@ -13,45 +13,50 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <!-- Logo -->
-      <a class="navbar-brand fw-bold fs-3" href="#">
-        <img src="./images/alumni-logo-footer.png" alt="Logo">Alumni Portal</a>
-
-      <!-- Toggler -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Nav Links -->
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav gap-4">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#About">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#Alumni">Alumni</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#Contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Right Buttons -->
-      <div class="d-flex ms-auto gap-2">
-        <a href="/login"><button type="button" class="btn btn-primary btn-sm rounded-pill px-4 py-2">Sign
-            In</button></a>
-        <a href="/signup"><button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4 py-2">Sign
-            Up</button></a>
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold fs-3" href="#">
+      <img src="./images/alumni-logo-footer.png" alt="Logo">Alumni Portal</a>
+      
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      
+    <!-- Nav Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto gap-4">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#About">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Alumni">Alumni</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Contact">Contact</a>
+        </li>
+      </ul>
+      
+      <!-- Buttons inside the collapsible menu but only on small screens -->
+      <div class="d-lg-none mt-3">
+        <div class="d-flex flex-row gap-2">
+          <a href="/login"><button type="button" class="btn btn-primary btn-sm rounded-pill px-4 py-2">Sign In</button></a>
+          <a href="/signup"><button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4 py-2">Sign Up</button></a>
+        </div>
       </div>
     </div>
-  </nav>
-
+    
+    <!-- Buttons visible only on large screens -->
+    <div class="d-none d-lg-flex gap-2">
+      <a href="/login"><button type="button" class="btn btn-primary btn-sm rounded-pill px-4 py-2">Sign In</button></a>
+      <a href="/signup"><button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-4 py-2">Sign Up</button></a>
+    </div>
+  </div>
+</nav>
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-overlay"></div>

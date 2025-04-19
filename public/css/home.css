@@ -207,7 +207,7 @@ body {
 .scroller-track {
   display: flex;
   width: max-content;
-  animation: scroll 25s linear infinite;
+  animation: scroll 20s linear infinite;
 }
 
 .scroller-item {
@@ -656,6 +656,7 @@ textarea.form-control {
     gap: 15px;
   }
 }
+
 
 .footer-link {
   text-decoration: none;
