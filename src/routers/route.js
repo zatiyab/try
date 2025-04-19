@@ -21,6 +21,8 @@ const staticFiles = "C:\\Users\\DELL\\Desktop\\Webdash\\public";
 
 const session = require('express-session');
 
+
+
 app.use(session({
     secret: 'yourSecretKey', // use something stronger in production
     resave: false,
@@ -39,9 +41,10 @@ app.get("/", (req, res) => {
     res.sendFile(staticFiles + "\\home.html")
 })
 
-app.get("/community", (req, res) => {
-    res.render("community.ejs")
+app.get("/edit-profile", (req, res) => {
+    res.render("editProfile.ejs")
 })
+
 
 app.get('/profile/:id', async (req, res) => {
     const id = parseInt(req.params.id);
@@ -58,7 +61,7 @@ app.get('/profile/:id', async (req, res) => {
 
 
 app.get("/feed", (req, res) => {
-    res.render("community.ejs")
+    res.render("community-feed.ejs")
 })
 app.get('/directory', async (req, res) => {
     const qres = await db.query("SELECT * FROM users")
