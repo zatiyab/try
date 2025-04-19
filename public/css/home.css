@@ -43,7 +43,7 @@ body {
 
 /* Link hover color stays dark */
 .nav-link:hover {
-  color: #333 !important;
+  color: #0d6efd !important;
 }
 
 /* Brand styling */
@@ -469,7 +469,7 @@ body {
 
 /* Keep link color dark on hover */
 .footer-link:hover {
-  color: #333;
+  color: #0d6efd;
 }
 
 /* Copyright line */
