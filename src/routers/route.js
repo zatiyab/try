@@ -38,31 +38,35 @@ db.connect();
 app.get("/", (req, res) => {
     res.sendFile(staticFiles + "\\home.html")
 })
+
+app.get('/profile/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const qres = await db.query("SELECT * FROM users WHERE user_id = $1", [id])
+    const user = qres.rows[0]
+    const qres2 = await db.query("SELECT * FROM achievements WHERE user_id =$1;", [id]);
+    const userAchievements = qres2.rows
+    console.log(user)
+    res.render('viewProfile.ejs', {
+        user,
+        achievements: userAchievements
+    });
+});
+
+
 app.get("/feed", (req, res) => {
     res.render("community.ejs")
 })
-app.get('/directory', (req, res) => {
-    res.render("alumniCards.ejs")
+app.get('/directory', async (req, res) => {
+    const qres = await db.query("SELECT * FROM users")
+    const users = qres.rows
+    console.log(users)
+    res.render("alumniCards.ejs", { users: users })
 })
 
-app.get("/achievements", (req, res) => {
-    const achievements = [
-        {
-            title: "1st Place - AI Hackathon",
-            description: "Won 1st place in an inter-college AI Hackathon for building an AI traffic controller.",
-            date: "March 2024"
-        },
-        {
-            title: "Launched Personal Portfolio",
-            description: "Built and deployed my own personal website with Express and EJS."
-        },
-        {
-            title: "Internship at DevTech",
-            description: "Worked as a backend intern using Node.js and PostgreSQL.",
-            date: "June 2023 - August 2023"
-        },
-    ]
-
+app.get("/achievements", async (req, res) => {
+    const qres = await db.query("SELECT * FROM achievements WHERE user_id =$1;", [req.session.user.user_id]);
+    const achievements = qres.rows
+    console.log(achievements)
     res.render("achievements.ejs", { achievements });
 });
 
@@ -93,10 +97,12 @@ app.post("/login", async (req, res) => {
 
         if ((user.email === req.body.email) && (user.password === req.body.password)) {
             console.log("User exists.")
-            let username = user.name
-            req.session.user = { name: username };
-            console.log(req.session.user)
-            return res.redirect(`/dashboard?username=${username}`)
+            req.session.user = {
+                name: user.name,
+                user_id: user.user_id
+            };
+            console.log(req.session)
+            return res.redirect(`/dashboard?username=${user.name}`)
         }
     }
     console.log('User does not exist.')

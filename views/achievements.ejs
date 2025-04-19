@@ -59,23 +59,19 @@
         <div class="col-md-9 col-lg-10 content">
             <h2 class="mb-4">🎉 Achievements</h2>
 
-            <div class="achievement-card">
-                <h5>🏆 Won National Robotics Challenge</h5>
-                <p class="mb-1">TechNova · March 2025</p>
-                <small>Led the team to victory by designing an AI-powered robot for warehouse automation.</small>
-            </div>
+            <% for (const a of achievements) { %>
+                <div class="achievement-card">
+                    <h5>🏆 <%=a.name %>
+                    </h5>
+                    <p class="mb-1">
+                        <%=a.org %> · <%=a.month %>/<%=a.year %>
+                    </p>
+                    <small>
+                        <%=a.description %>
+                    </small>
+                </div>
 
-            <div class="achievement-card">
-                <h5>📜 Published ML Research Paper</h5>
-                <p class="mb-1">ICML Conference · Jan 2025</p>
-                <small>Explored transformer-based architectures for sentiment analysis on social media.</small>
-            </div>
-
-            <div class="achievement-card">
-                <h5>🎓 Graduated with Distinction</h5>
-                <p class="mb-1">BITS Pilani · CSE 2024</p>
-                <small>Specialized in AI/ML with a 9.6 CGPA and completed a thesis on ethical AI frameworks.</small>
-            </div>
+                <% } %>
 
         </div>
         </div>
