@@ -135,11 +135,12 @@ For questions or support, please contact us at
 * 📧 mdnoor8586@gmail.com
 
 **🌟 Ali Atiyab 🌟**
-* 📞 +91 8765432109
-* 📧 ali.atiyab@example.com
+* 📞 +91 9953228138
+* 📧 aliatiyab.husain@gmail.com
 
 **💫 Rihaan Khan 💫**
-* 📞 +91 7654321098
-* 📧 rihaan.khan@example.com
+* 📞 +91 92667 83386
+* 📧 rihaankhan2828@gmail.com 
+
 
 © 2025 WebWizard. All Rights Reserved.
