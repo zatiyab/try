@@ -19,7 +19,7 @@ const db = new pg.Client({
     database: process.env.DB_DATABASE,
 });
 
-const staticFiles = "C:\\Users\\DELL\\Desktop\\Webdash\\public";
+// const staticFiles = "C:\\Users\\DELL\\Desktop\\Webdash\\public";
 
 const session = require('express-session');
 
@@ -44,7 +44,7 @@ app.set('views', 'C:\\Users\\DELL\\Desktop\\Webdash\\views');
 
 
 app.get("/", (req, res) => {
-    res.sendFile(staticFiles + "\\home.html")
+    res.sendFile("\\home.html")
 })
 
 app.get("/edit-profile", (req, res) => {
