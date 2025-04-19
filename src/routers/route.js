@@ -81,14 +81,16 @@ app.get('/directory', async (req, res) => {
 
 app.get("/achievements", async (req, res) => {
     const qres = await db.query("SELECT * FROM achievements WHERE user_id =$1;", [req.session.user.user_id]);
-    const achievements = qres.rows
+    const achievements = (qres.rows).reverse()
     console.log(achievements)
     res.render("achievements.ejs", { achievements });
 });
 
-app.get("/dashboard", (req, res) => {
+app.get("/dashboard", async (req, res) => {
+    const qres = await db.query("SELECT name,post FROM posts,users WHERE posts.user_id= users.user_id;")
+    var posts_users = (qres.rows).reverse()
     const name = req.session.user.name;
-    res.render("dashboard.ejs", { name: name })
+    res.render("dashboard.ejs", { name: name, posts: posts_users })
 })
 
 app.get('/logout', (req, res) => {
@@ -109,6 +111,15 @@ app.get("/signup", (req, res) => {
 
 
 
+
+app.post("/add-achievements", async (req, res) => {
+    data = req.body
+    const user_id = req.session.user.user_id
+    data["user_id"] = user_id
+    console.log(data)
+    const qres = await db.query("INSERT INTO achievements (user_id, name, org, description, month, year)VALUES ($1,$2,$3,$4,$5,$6);", [data.user_id, data.name, data.org, data.description, data.month, data.year])
+    res.redirect("/achievements")
+})
 
 app.post('/post', upload.none(), async (req, res) => {
     const tags = req.body.tags.split(",")

@@ -32,15 +32,24 @@
             <h4 class="mt-5 mb-3">🎉 Recent Community Activity</h4>
             <table class="table table-striped table-bordered">
                 <tbody>
+
                     <tr>
                         <td>You posted in <strong>"Tech Careers After Graduation"</strong></td>
                     </tr>
-                    <tr>
-                        <td>John Doe added a new achievement: <em>"Promoted to Lead Developer at TCS"</em></td>
-                    </tr>
-                    <tr>
-                        <td>New event: <strong>Alumni Meet 2025</strong> – Register now!</td>
-                    </tr>
+                    <% let cnt=0; %>
+                        <% for (const post of posts) {%>
+                            <% cnt++ %>
+                                <% if (cnt===10){ break } %>
+                                    <tr>
+                                        <td>
+                                            <%= post.name %> added a new achievement: <em>"<%= post.post %>"</em>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                        <tr>
+                                            <td>New event: <strong>Alumni Meet 2025</strong> – Register now!</td>
+                                        </tr>
+
                 </tbody>
             </table>
         </div>
