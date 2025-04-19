@@ -310,3 +310,11 @@ window.addEventListener('click', (e) => {
     modal.classList.remove('show');
   }
 });
+
+
+
+
+// comuunity--------------------------------------------------------------------------------------------
+
+
+ 
